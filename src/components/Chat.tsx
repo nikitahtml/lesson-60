@@ -18,7 +18,7 @@ const Chat: React.FC = () => {
         try {
             const response = await fetch('http://146.185.154.90:8000/messages');
             const data = await response.json();
-            setMessages(data.slice(-20)); // Отображаем последние 20 сообщений
+            setMessages(data.slice(-20));
         } catch (error) {
             console.error('Ошибка при загрузке сообщений:', error);
         }
@@ -27,6 +27,7 @@ const Chat: React.FC = () => {
     useEffect(() => {
         fetchMessages();
         const interval = setInterval(fetchMessages, 3000);
+
         return () => clearInterval(interval);
     }, [fetchMessages]);
 
@@ -49,6 +50,8 @@ const Chat: React.FC = () => {
         }
     };
 
+
+
     return (
         <Container>
             <Row>
@@ -58,20 +61,20 @@ const Chat: React.FC = () => {
                 </Col>
             </Row>
             <Row>
-                <Col>
-                    <Form onSubmit={sendMessage}>
+                 <Col>
+                     <Form onSubmit={sendMessage}>
                         <Form.Group controlId="author">
                             <Form.Label>Author</Form.Label>
-                            <Form.Control
+                               <Form.Control
                                 type="text"
                                 value={author}
                                 onChange={(e) => setAuthor(e.target.value)}
                                 required
                             />
                         </Form.Group>
-                        <Form.Group controlId="message">
+                             <Form.Group controlId="message">
                             <Form.Label>Message</Form.Label>
-                            <Form.Control
+                               <Form.Control
                                 as="textarea"
                                 rows={3}
                                 value={newMessage}
@@ -80,12 +83,15 @@ const Chat: React.FC = () => {
                             />
                         </Form.Group>
                         <Button type="submit" className="mt-3">
-                            Send
+                              Send
                         </Button>
                     </Form>
                 </Col>
+
             </Row>
-        </Container>
+
+
+          </Container>
     );
 };
 
