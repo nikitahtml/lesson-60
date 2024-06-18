@@ -17,8 +17,8 @@ const MessageList: React.FC<MessageListProps> = ({ messages }) => {
         <ListGroup>
             {messages.map((msg) => (
                 <ListGroup.Item key={msg._id}>
-                    <div className="text-muted" style={{ fontSize: '0.8em' }}>
-                        <strong>{msg.author}</strong>: {msg.message}
+                    <strong  style={{margin:'10px'}}>{msg.author}</strong>: {msg.message}
+                    <div className="text-muted" style={{ fontSize: '0.9em' }}>
                         {new Date(msg.datetime).toLocaleString()}
 
                     </div>

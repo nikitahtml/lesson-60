@@ -28,7 +28,7 @@ const Chat: React.FC = () => {
         try {
             const response = await fetch('http://146.185.154.90:8000/messages');
             const data = await response.json();
-            setMessages(data.slice(-20));
+            setMessages(data.slice(-18));
 
                } catch (error) {
              console.error('Ошибка при загрузке сообщений:', error);
@@ -42,8 +42,8 @@ const Chat: React.FC = () => {
         return () => clearInterval(interval);
     },      [fetchMessages]);
 
-    const sendMessage = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const sendMessage = async (event: React.FormEvent) => {
+        event.preventDefault();
         try {
             const data = new URLSearchParams();
             data.set('message', formState.newMessage);
@@ -76,13 +76,13 @@ const Chat: React.FC = () => {
         <Container>
             <Row>
                 <Col>
-                    <h2>Chat</h2>
+                    <h2>Chat 2.0</h2>
                     <MessageList messages={messages} />
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <Form onSubmit={sendMessage}>
+                    <Form onSubmit={sendMessage} style={{marginTop:'40px'}}>
                         <Form.Group controlId="author">
                             <Form.Label>Author</Form.Label>
                             <Form.Control
