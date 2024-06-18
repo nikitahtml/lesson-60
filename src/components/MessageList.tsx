@@ -17,15 +17,15 @@ const MessageList: React.FC<MessageListProps> = ({ messages }) => {
         <ListGroup>
             {messages.map((msg) => (
                 <ListGroup.Item key={msg._id}>
-                    <strong>{msg.author}</strong>: {msg.message}
                     <div className="text-muted" style={{ fontSize: '0.8em' }}>
+                        <strong>{msg.author}</strong>: {msg.message}
                         {new Date(msg.datetime).toLocaleString()}
+
                     </div>
                 </ListGroup.Item>
             ))}
         </ListGroup>
     );
 };
-
 
 export default MessageList;
